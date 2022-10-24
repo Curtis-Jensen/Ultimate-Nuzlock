@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(FighterSelect))]
 public class FighterSelectEditor : Editor
 {
-    /* 1 Picks a number between 1 (inclusive) and 12 (inclusive)
+    /* 
      */
     public override void OnInspectorGUI()
     {
@@ -16,7 +16,7 @@ public class FighterSelectEditor : Editor
         {
             var fighterSelect = (FighterSelect)target;
 
-            Debug.Log(fighterSelect.ChooseFighter());//1
+            fighterSelect.ChooseFighter();
         } 
     }
 }

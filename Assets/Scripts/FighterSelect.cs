@@ -36,7 +36,7 @@ public class FighterSelect : MonoBehaviour
 
             i++;
             if (i > 1000) throw new UnityException("Got stuck in an infinite while loop");
-        } while (chosenFighter.status != Fighter.Status.Enemy) ;
+        } while (chosenFighter.status != Fighter.Status.Enemy);
 
         fighters[randomNumber].status = Fighter.Status.Friend;//3
         fighterText.text = chosenFighter.name;

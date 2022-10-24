@@ -283,17 +283,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fighters:
   - name: Mario
+    status: 0
+  - name: Donkey Kong
+    status: 0
+  - name: Link
+    status: 0
+  - name: Samus
+    status: 0
+  - name: Yoshi
+    status: 0
+  - name: Kirby
+    status: 0
+  - name: Fox
+    status: 0
+  - name: Picachu
+    status: 0
   - name: Luigi
-  - name: 
-  - name: 
-  - name: 
-  - name: 
-  - name: 
-  - name: 
-  - name: 
-  - name: 
-  - name: 
-  - name: 
+    status: 0
+  - name: Ness
+    status: 0
+  - name: Captain Falcon
+    status: 0
+  - name: JigglyPuff
+    status: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

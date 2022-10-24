@@ -8,9 +8,20 @@ public class FighterSelect : MonoBehaviour
 {
     public Fighter[] fighters;
 
-    /* 1 Initialize all the things
-     * 
-     * 2 Checks that the next opponent being chosen is not already a friend
+    Text fighterText;
+    int randomNumber;
+    System.Random randomNumberGenerator;
+    Fighter chosenFighter;
+    int remainingFighters;
+
+    void Start()
+    {
+        fighterText = gameObject.GetComponent<Text>();
+        randomNumberGenerator = new System.Random();
+        remainingFighters = fighters.Length;
+    }
+
+    /* 2 Checks that the next opponent being chosen is not already a friend
      * It does this by chosing a random fighter and making sure it's not already a friend
      * 
      * 3 Once the fighter has been chosen, assume it's going to be beaten and become a friend,
@@ -20,14 +31,6 @@ public class FighterSelect : MonoBehaviour
      */
     public string ChooseFighter()
     {
-        #region Initializations
-        Text fighterText = gameObject.GetComponent<Text>();
-        System.Random randomNumberGenerator = new System.Random();
-        Fighter chosenFighter;
-        int randomNumber;
-        int remainingFighters = fighters.Length;
-        #endregion//1
-
         int i = 0;
         do//2
         {

@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a663e2118efa841afc8c5b891acf62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  squadStrikeEnd: 1
   fighters:
   - name: Mario
     status: 0

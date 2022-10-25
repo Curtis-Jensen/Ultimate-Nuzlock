@@ -12,11 +12,17 @@ public class FighterSelectEditor : Editor
     {
         DrawDefaultInspector();
 
-        if (GUILayout.Button("Next Fighter")) 
+        if (GUILayout.Button("Next Fighters")) 
         {
             var fighterSelect = (FighterSelect)target;
 
-            fighterSelect.ChooseFighter();
-        } 
+
+            fighterSelect.SlowMo();
+            fighterSelect.ChooseFighter(Fighter.Status.Friend, fighterSelect.friendFighterText);
+            fighterSelect.ChooseFighter(Fighter.Status.Enemy, fighterSelect.enemyFighterText);
+
+            if (fighterSelect.remainingFighters == 3 && fighterSelect.squadStrikeEnd)
+                fighterSelect.enemyFighterText.text = fighterSelect.ArrangeSquadStrike();
+        }
     }
 }

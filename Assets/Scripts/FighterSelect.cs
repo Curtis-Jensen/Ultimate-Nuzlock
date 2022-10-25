@@ -6,17 +6,27 @@ using UnityEngine.UI;
 
 public class FighterSelect : MonoBehaviour
 {
+    [Tooltip("Will squad strike be in the ending?")]
+    public bool squadStrikeEnd;
+    [Range(1,9)] 
+    [Tooltip("What level to set the CPUs to.  This is more to keep track; it's not called in code.")]
+    public int difficultyLevel = 9;
+    [Range(0,1)]
+    public float slowMoChance;
+    [Tooltip("What fighters are being used.")]
     public Fighter[] fighters;
+    public Text friendFighterText;
+    public Text enemyFighterText;
+    public Text slowMoText;
 
-    Text fighterText;
+    internal int remainingFighters;
     int randomNumber;
     System.Random randomNumberGenerator;
     Fighter chosenFighter;
-    int remainingFighters;
 
     void Start()
     {
-        fighterText = gameObject.GetComponent<Text>();
+        enemyFighterText = gameObject.GetComponent<Text>();
         randomNumberGenerator = new System.Random();
         remainingFighters = fighters.Length;
     }
@@ -26,10 +36,8 @@ public class FighterSelect : MonoBehaviour
      * 
      * 3 Once the fighter has been chosen, assume it's going to be beaten and become a friend,
      * and then update the text to show who it is
-     * 
-     * 4 If there are only 3 fighters left, show the squad strike
      */
-    public string ChooseFighter()
+    internal string ChooseFighter(Fighter.Status desiredStatus, Text displayText)
     {
         int i = 0;
         do//2
@@ -39,18 +47,35 @@ public class FighterSelect : MonoBehaviour
 
             i++;
             if (i > 1000) throw new UnityException("Got stuck in an infinite while loop");
-        } while (chosenFighter.status != Fighter.Status.Enemy);
+        } while (chosenFighter.status != desiredStatus);
 
         fighters[randomNumber].status = Fighter.Status.Friend;//3
-        fighterText.text = chosenFighter.name;
+        displayText.text = chosenFighter.name;
 
         remainingFighters--;
-        if (remainingFighters == 3) fighterText.text = ArrangeSquadStrike();//4
 
         return chosenFighter.name;
     }
 
-    string ArrangeSquadStrike()
+    internal void SlowMo()
+    {
+        float randomNumber = UnityEngine.Random.value;
+
+        Debug.Log(randomNumber);
+
+        if (randomNumber < slowMoChance)
+             slowMoText.text = "SLOW MOTION";
+        else slowMoText.text = "";
+    }
+
+    /* TODO: Right now it lets the player know there's a squad strike, 
+     * but it picks from the top of the list every time.  Randomize that.
+     */
+    /// <summary>
+    /// Groups the final fighters for a squad strike
+    /// </summary>
+    /// <returns></returns>
+    internal string ArrangeSquadStrike()
     {
         string fullList = "";
         foreach(Fighter fighter in fighters)

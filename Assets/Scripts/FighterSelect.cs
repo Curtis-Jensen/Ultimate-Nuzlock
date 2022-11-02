@@ -61,8 +61,6 @@ public class FighterSelect : MonoBehaviour
     {
         float randomNumber = UnityEngine.Random.value;
 
-        Debug.Log(randomNumber);
-
         if (randomNumber < slowMoChance)
              slowMoText.text = "SLOW MOTION";
         else slowMoText.text = "";

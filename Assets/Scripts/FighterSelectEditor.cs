@@ -16,13 +16,19 @@ public class FighterSelectEditor : Editor
         {
             var fighterSelect = (FighterSelect)target;
 
-
-            fighterSelect.SlowMo();
-            fighterSelect.ChooseFighter(Fighter.Status.Friend, fighterSelect.friendFighterText);
-            fighterSelect.ChooseFighter(Fighter.Status.Enemy, fighterSelect.enemyFighterText);
+            if (fighterSelect.remainingFighters == fighterSelect.fighters.Length)
+                fighterSelect.ChooseFighter(Fighter.Status.Enemy, fighterSelect.enemyFighterText);
 
             if (fighterSelect.remainingFighters == 3 && fighterSelect.squadStrikeEnd)
+            {
                 fighterSelect.enemyFighterText.text = fighterSelect.ArrangeSquadStrike();
+            }
+            else
+            {
+                fighterSelect.SlowMo();
+                fighterSelect.ChooseFighter(Fighter.Status.Friend, fighterSelect.friendFighterText);
+                fighterSelect.ChooseFighter(Fighter.Status.Enemy, fighterSelect.enemyFighterText);
+            }
         }
     }
 }

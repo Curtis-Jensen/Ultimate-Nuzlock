@@ -441,10 +441,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   squadStrikeEnd: 0
   difficultyLevel: 9
-  slowMoChance: 0.51
+  slowMoChance: 0.25
   fighters:
   - name: Kirby
-    status: 1
+    status: 0
   - name: Meta Knight
     status: 0
   - name: King Deedeedee

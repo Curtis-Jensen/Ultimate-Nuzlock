@@ -16,9 +16,6 @@ public class FighterSelectEditor : Editor
         {
             var fighterSelect = (FighterSelect)target;
 
-            if (fighterSelect.remainingFighters == fighterSelect.fighters.Length)
-                fighterSelect.ChooseFighter(Fighter.Status.Enemy, fighterSelect.enemyFighterText);
-
             if (fighterSelect.remainingFighters == 3 && fighterSelect.squadStrikeEnd)
             {
                 fighterSelect.enemyFighterText.text = fighterSelect.ArrangeSquadStrike();

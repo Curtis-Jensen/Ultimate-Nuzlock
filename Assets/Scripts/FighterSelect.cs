@@ -24,11 +24,20 @@ public class FighterSelect : MonoBehaviour
     System.Random randomNumberGenerator;
     Fighter chosenFighter;
 
+    /* 1 Because enemy selection turns them into a friend, it can be used to pick an initial player 1
+     * 
+     * 2 Naturally, this will choose the same fighter as the line above.  Then an enemy is chosen
+     */
     void Start()
     {
         enemyFighterText = gameObject.GetComponent<Text>();
         randomNumberGenerator = new System.Random();
         remainingFighters = fighters.Length;
+
+        SlowMo();
+        ChooseFighter(Fighter.Status.Enemy, enemyFighterText);//1
+        ChooseFighter(Fighter.Status.Friend, friendFighterText);//2
+        ChooseFighter(Fighter.Status.Enemy, enemyFighterText);
     }
 
     /* 2 Checks that the next opponent being chosen is not already a friend
